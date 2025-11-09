@@ -2,7 +2,7 @@
 
 Hi, there!
 
-This repository **Boilerplates** is my personal template collection. Here you'll
+This repository **Dotfiles** is my personal template collection. Here you'll
 find templates, and configurations for various tools and tecnologies.
 
 ## Contribution
