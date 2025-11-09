@@ -1,0 +1,311 @@
+#   ---------------------------------------------------------------------------------------------------
+#   ---------------------------------------
+#   0. Set Wallpaper
+#   ---------------------------------------------------------------------------------------------------
+#exec --no-startup-id
+#feh --bg-fill $HOME/Imagens/Wallpapers/wallhaven-qzry1q.png
+
+#   ---------------------------------------------------------------------------------------------------
+#   ---------------------------------------
+#   1. My Network
+#   ---------------------------------------------------------------------------------------------------
+
+
+#   ---------------------------------------------------------------------------------------------------
+#   ---------------------------------------
+#   2. Set Paths
+#   ---------------------------------------------------------------------------------------------------
+# Execute environment
+source "/etc/environment"
+# Scripts personal
+export PATH="$HOME/bin:$PATH"
+# Snap apps
+export PATH="/snap/bin:$PATH"
+# aws cli
+export PATH="$HOME/.local/bin/:$PATH"
+
+# Java
+# source "/etc/profile.d/jdk19.sh"
+# Maven
+# M2_HOME='/opt/apache-maven'
+# export PATH="$M2_HOME/bin:$PATH"
+
+#Intellij path
+export PATH="$PATH:/opt/idea/bin"
+
+# GO Path
+export GOPATH="$HOME/go"
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin/"
+export GO111MODULE=on
+
+#### Homebrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+## tfenv
+export PATH="$HOME/.tfenv/bin:$PATH"
+
+#   ---------------------------------------------------------------------------------------------------
+#   -----------------------------
+#   3.  MAKE TERMINAL BETTER
+#   -----------------------------
+#   ---------------------------------------------------------------------------------------------------
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "Task finished" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+alias developer='cd /mnt/d/Developer'
+#alias ls='ls --color=always' 		# ls color
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+alias edit='code'                           # edit:         Opens any file in sublime editor
+alias c='clear'                             # c:            Clear terminal display
+#alias which='type -all'                     # which:        Find executables
+alias show_options='shopt'                  # Show_options: display bash options settings
+alias Developer='cd /media/carlos/Docs/Developer'
+alias plug='cd $HOME/Developer/plug'
+
+mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
+
+#   Set Default Editor (change 'Vim' to the editor of your choice)
+#   ------------------------------------------------------------
+export EDITOR=/usr/local/bin/nvim # /usr/bin/vim
+
+# Terraform Aliases
+#   ------------------------------------------------------------
+alias tf='terraform'
+alias tfa='terraform apply'
+alias tfc='terraform console'
+alias tfd='terraform destroy'
+alias tff='terraform fmt'
+alias tfg='terraform graph'
+alias tfim='terraform import'
+alias tfin='terraform init'
+alias tfo='terraform output'
+alias tfp='terraform plan'
+alias tfpr='terraform providers'
+alias tfr='terraform refresh'
+alias tfsh='terraform show'
+alias tft='terraform taint'
+alias tfut='terraform untaint'
+alias tfv='terraform validate'
+alias tfw='terraform workspace'
+alias tfs='terraform state'
+alias tffu='terraform force-unlock'
+alias tfwst='terraform workspace select'
+alias tfwsw='terraform workspace show'
+alias tfssw='terraform state show'
+alias tfwde='terraform workspace delete'
+alias tfwls='terraform workspace list'
+alias tfsls='terraform state list'
+alias tfwnw='terraform workspace new'
+alias tfsmv='terraform state mv'
+alias tfspl='terraform state pull'
+alias tfsph='terraform state push'
+alias tfsrm='terraform state rm'
+alias tfay='terraform apply -auto-approve'
+alias tfdy='terraform destroy -auto-approve'
+alias tfinu='terraform init -upgrade'
+alias tfpde='terraform plan --destroy'
+
+
+#   ---------------------------------------------------------------------------------------------------
+#   -------------------------------
+#   4.  FILE AND FOLDER MANAGEMENT
+#   -------------------------------
+#   ---------------------------------------------------------------------------------------------------
+
+zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
+#   extract:  Extract most know archives with one command
+#   ---------------------------------------------------------
+    extract () {
+        if [ -f $1 ] ; then
+          case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+			*.tar.xz)	 tar -vxJf $1	;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+             esac
+         else
+             echo "'$1' is not a valid file"
+         fi
+    }
+
+
+#   ---------------------------------------------------------------------------------------------------
+#   ---------------------------
+#   5.  NETWORKING
+#   ---------------------------
+#   ---------------------------------------------------------------------------------------------------
+
+alias myip='curl http://checkip.amazonaws.com'      # myip:         Public facing IP Address
+alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
+alias lsock='sudo /usr/bin/lsof -i -P'             # lsock:        Display open sockets
+alias lsockU='sudo /usr/bin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
+alias lsockT='sudo /usr/bin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
+alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
+
+
+#   ii:  display useful host related informaton
+#   -------------------------------------------------------------------
+    ii() {
+	    echo -e "\nYou are logged on ${RED}$HOST"
+	    echo -e "\nAdditionnal information:$NC " ; uname -a
+	    echo -e "\n${RED}Users logged on:$NC " ; w -h
+	    echo -e "\n${RED}Current date :$NC "; date
+		echo -e "\n${RED}Machine stats :$NC" ; uptime
+	    echo -e "\n${RED}Public facing IP Address :$NC " ;myip
+	    echo
+	    }
+
+#   ---------------------------------------------------------------------------------------------------
+#   ---------------------------------------
+#   6. WEB DEVELOPMENT
+#   ---------------------------------------
+#   ---------------------------------------------------------------------------------------------------
+
+alias nginxEdit='sudo edit /etc/nginx/nginx.conf'
+alias NginxRestart='sudo nginx -t && sudo service nginx restart'
+alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
+alias herr='tail /var/log/nginx/error.log'              # herr:             Tails HTTP error logs
+httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
+#   ---------------------------------------------------------------------------------------------------
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+docker-compose-restart(){
+	docker-compose stop $@
+	docker-compose rm -f -v $@
+	docker-compose create --force-recreate $@
+	docker-compose start $@
+}
+#[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+
+######### Kubernetes
+
+
+# This command is used a LOT both below and in daily life
+alias k=kubectl
+
+# Execute a kubectl command against all namespaces
+alias kca='f(){ kubectl "$@" --all-namespaces;  unset -f f; }; f'
+
+# Apply a YML file
+alias kaf='kubectl apply -f'
+
+# Drop into an interactive terminal on a container
+alias keti='kubectl exec -ti'
+
+# Manage configuration quickly to switch contexts between local, dev ad staging.
+alias kcuc='kubectl config use-context'
+alias kcsc='kubectl config set-context'
+alias kcdc='kubectl config delete-context'
+alias kccc='kubectl config current-context'
+
+# List all contexts
+alias kcgc='kubectl config get-contexts'
+
+# General aliases
+alias kdel='kubectl delete'
+alias kdelf='kubectl delete -f'
+
+# Pod management.
+alias kgp='kubectl get pods'
+alias kgpw='kgp --watch'
+alias kgpwide='kgp -o wide'
+alias kep='kubectl edit pods'
+alias kdp='kubectl describe pods'
+alias kdelp='kubectl delete pods'
+
+# get pod by label: kgpl "app=myapp" -n myns
+alias kgpl='kgp -l'
+
+# Service management.
+alias kgs='kubectl get svc'
+alias kgsw='kgs --watch'
+alias kgswide='kgs -o wide'
+alias kes='kubectl edit svc'
+alias kds='kubectl describe svc'
+alias kdels='kubectl delete svc'
+
+# Ingress management
+alias kgi='kubectl get ingress'
+alias kei='kubectl edit ingress'
+alias kdi='kubectl describe ingress'
+alias kdeli='kubectl delete ingress'
+
+# Namespace management
+alias kgns='kubectl get namespaces'
+alias kens='kubectl edit namespace'
+alias kdns='kubectl describe namespace'
+alias kdelns='kubectl delete namespace'
+alias kcn='kubectl config set-context $(kubectl config current-context) --namespace'
+
+# ConfigMap management
+alias kgcm='kubectl get configmaps'
+alias kecm='kubectl edit configmap'
+alias kdcm='kubectl describe configmap'
+alias kdelcm='kubectl delete configmap'
+
+# Secret management
+alias kgsec='kubectl get secret'
+alias kdsec='kubectl describe secret'
+alias kdelsec='kubectl delete secret'
+
+# Deployment management.
+alias kgd='kubectl get deployment'
+alias kgdw='kgd --watch'
+alias kgdwide='kgd -o wide'
+alias ked='kubectl edit deployment'
+alias kdd='kubectl describe deployment'
+alias kdeld='kubectl delete deployment'
+alias ksd='kubectl scale deployment'
+alias krsd='kubectl rollout status deployment'
+kres(){
+    kubectl set env $@ REFRESHED_AT=$(date +%Y%m%d%H%M%S)
+}
+
+# Rollout management.
+alias kgrs='kubectl get rs'
+alias krh='kubectl rollout history'
+alias kru='kubectl rollout undo'
+
+# Port forwarding
+alias kpf="kubectl port-forward"
+
+# Tools for accessing all information
+alias kga='kubectl get all'
+alias kgaa='kubectl get all --all-namespaces'
+
+# Logs
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
+
+# File copy
+alias kcp='kubectl cp'
+
+# Node Management
+alias kgno='kubectl get nodes'
+alias keno='kubectl edit node'
+alias kdno='kubectl describe node'
+alias kdelno='kubectl delete node'
+
+
+#### Tilix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+	source /etc/profile.d/vte.sh
+fi
