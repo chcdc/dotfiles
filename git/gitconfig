@@ -16,7 +16,7 @@
 
 [init]
 	defaultBranch = main
-	templateDir = /Users/carlos.carvalho/.git-template
+	templateDir = ~/.git-template
 
 [tag]
 	forceSignAnnotated = true
