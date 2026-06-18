@@ -31,7 +31,6 @@ export PATH="$HOME/.local/bin/:$PATH"
 # export PATH="$M2_HOME/bin:$PATH"
 
 #Intellij path
-export PATH="$PATH:/opt/idea/bin"
 
 # GO Path
 export GOPATH="$HOME/go"
@@ -55,7 +54,6 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "Task finished" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
-alias developer='cd /mnt/d/Developer'
 #alias ls='ls --color=always' 		# ls color
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
@@ -65,8 +63,6 @@ alias edit='code'                           # edit:         Opens any file in su
 alias c='clear'                             # c:            Clear terminal display
 #alias which='type -all'                     # which:        Find executables
 alias show_options='shopt'                  # Show_options: display bash options settings
-alias Developer='cd /media/carlos/Docs/Developer'
-alias plug='cd $HOME/Developer/plug'
 
 mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
 
