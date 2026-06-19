@@ -23,3 +23,6 @@ push:
 	git add -u
 	git commit -m "chore: sync dotfiles $(TIMESTAMP) [$(CHANGED)]"
 	git push
+
+restore:
+	bash install.sh restore
